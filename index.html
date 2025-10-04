@@ -30,6 +30,27 @@
             align-items: center;
         }
 
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: #ff9eb3;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ff85a1;
+        }
+
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
@@ -138,69 +159,6 @@
             transform: translateY(-2px);
         }
 
-        .worked-with {
-            margin: 2rem 0;
-        }
-
-        .worked-label {
-            color: #999;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-
-        .company-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .company-pill {
-            background: white;
-            color: #333;
-            padding: 0.6rem 1.2rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 2px solid #e0e0e0;
-            transition: all 0.3s;
-        }
-
-        .company-pill:hover {
-            border-color: #ff9eb3;
-            color: #ff9eb3;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: #ff9eb3;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin-right: 1rem;
-        }
-
-        .cta-btn:hover {
-            background: #ff85a1;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 158, 179, 0.3);
-        }
-
-        .cta-btn.secondary {
-            background: white;
-            color: #ff9eb3;
-            border: 2px solid #ff9eb3;
-        }
-
-        .cta-btn.secondary:hover {
-            background: #ff9eb3;
-            color: white;
-        }
-
         .hero-right {
             display: flex;
             justify-content: center;
@@ -263,113 +221,6 @@
             line-height: 1.6;
         }
 
-        .experience {
-            background: #f5f7fa;
-            padding: 4rem 8%;
-        }
-
-        .experience-item {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            border-left: 4px solid #ff9eb3;
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 1rem;
-        }
-
-        .experience-title {
-            font-size: 1.5rem;
-            color: #1a1a1a;
-            margin-bottom: 0.3rem;
-        }
-
-        .experience-company {
-            color: #ff9eb3;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .experience-date {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        .experience-bullets {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .experience-bullets li {
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            position: relative;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .experience-bullets li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #ff9eb3;
-            font-weight: bold;
-        }
-
-        .projects {
-            background: white;
-            padding: 4rem 8%;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 2.5rem;
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 158, 179, 0.2);
-        }
-
-        .project-card h3 {
-            color: #ff9eb3;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .project-card p {
-            color: #555;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            background: #ff9eb3;
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
         .skills {
             background: #f5f7fa;
             padding: 4rem 8%;
@@ -429,8 +280,115 @@
             transform: translateY(-2px);
         }
 
-        .contact {
+        .experience {
+            background: white;
+            padding: 4rem 8%;
+        }
+
+        .experience-item {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #ff9eb3;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-company {
+            color: #ff9eb3;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-date {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .experience-bullets {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-bullets li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .experience-bullets li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ff9eb3;
+            font-weight: bold;
+        }
+
+        .projects {
             background: #f5f7fa;
+            padding: 4rem 8%;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 158, 179, 0.2);
+        }
+
+        .project-card h3 {
+            color: #ff9eb3;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #ff9eb3;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .contact {
+            background: white;
             padding: 6rem 8%;
             text-align: center;
         }
@@ -494,7 +452,7 @@
         }
 
         footer {
-            background: white;
+            background: #f5f7fa;
             padding: 2rem 8%;
             border-top: 1px solid #e0e0e0;
             text-align: center;
@@ -561,12 +519,31 @@
 </head>
 <body>
     <nav>
-        <div class="logo"><span class="logo-pink">Bhavya</span> Samtani</div>
+        <div class="nav-left">
+            <div class="social-icons">
+                <a href="https://github.com/bhavyasamtani" target="_blank">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/bhavyasamtani" target="_blank">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="mailto:bsamtani20@gmail.com">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
         <ul>
             <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -577,6 +554,31 @@
                 <div class="graduating">Graduating May 2026</div>
                 <h1>Bhavya Samtani</h1>
                 <p class="hero-subtitle">Master's student in Information Systems at CSULB with 4.5+ years in IT and FinTech. Skilled in SQL, Python, Tableau, Power BI, and ETL pipelines. Experienced in building dashboards, predictive models, and analytics solutions that improve data accuracy, automate reporting, and drive business insights.</p>
+                
+                <a href="#" class="view-resume-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    View Resume
+                </a>
+                
+                <div class="hero-meta">
+                    <div class="meta-item">📍 Long Beach, California</div>
+                    <div class="meta-item">🎓 MS Information Systems</div>
+                    <div class="meta-item">📊 Data Analytics Focus</div>
+                </div>
+
+                <a href="https://www.linkedin.com/in/bhavyasamtani" target="_blank" class="linkedin-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    View LinkedIn
+                </a>
+            </div> Power BI, and ETL pipelines. Experienced in building dashboards, predictive models, and analytics solutions that improve data accuracy, automate reporting, and drive business insights.</p>
                 
                 <div class="hero-meta">
                     <div class="meta-item">📍 Long Beach, California</div>
@@ -622,25 +624,50 @@
         </div>
     </section>
 
+    <section class="skills" id="skills">
+        <div class="section-container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-pills">
+                        <span class="pill-light">SQL</span>
+                        <span class="pill-light">Python</span>
+                        <span class="pill-light">R</span>
+                        <span class="pill-light">Oracle</span>
+                        <span class="pill-light">MySQL</span>
+                        <span class="pill-light">Databricks</span>
+                        <span class="pill-light">Tableau</span>
+                        <span class="pill-light">Power BI</span>
+                        <span class="pill-light">Google Data Studio</span>
+                        <span class="pill-light">Excel</span>
+                        <span class="pill-light">GitHub</span>
+                        <span class="pill-light">Jira</span>
+                        <span class="pill-light">Figma</span>
+                        <span class="pill-light">Miro</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Competencies</h3>
+                    <div class="skill-pills">
+                        <span class="pill-colored">Statistical Analysis</span>
+                        <span class="pill-colored">Predictive Modeling</span>
+                        <span class="pill-colored">Data Modeling</span>
+                        <span class="pill-colored">ETL/ELT Pipelines</span>
+                        <span class="pill-colored">Fraud Detection</span>
+                        <span class="pill-colored">Data Analytics</span>
+                        <span class="pill-colored">Agile/Scrum</span>
+                        <span class="pill-colored">KPI Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="experience" id="experience">
         <div class="section-container">
             <h2 class="section-title">Professional Experience</h2>
             
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <div class="experience-company">California State University</div>
-                        <div class="experience-title">Student Assistant</div>
-                        <div class="experience-date">Feb 2025 – Present | Long Beach</div>
-                    </div>
-                </div>
-                <ul class="experience-bullets">
-                    <li>Processed and validated more than 50,000 records with SQL and Excel, improving data quality and accuracy for university reporting</li>
-                    <li>Built automated dashboards and recurring reports in Power BI and Google Data Studio, reducing reporting turnaround time by 30%</li>
-                    <li>Defined and tracked KPIs across marketing and product teams, delivering actionable analytics supporting decision-making</li>
-                </ul>
-            </div>
-
             <div class="experience-item">
                 <div class="experience-header">
                     <div>
@@ -652,7 +679,7 @@
                 <ul class="experience-bullets">
                     <li>Automated SQL and Python reconciliation pipelines on large datasets, improving processing efficiency by 80%</li>
                     <li>Designed and deployed Power BI dashboards with real-time KPIs, enhancing risk monitoring and executive decision-making</li>
-                    <li>Partnered with global teams across India, UK, and US to gather requirements and deliver production-ready analytics solutions</li>
+                    <li>Partnered with global teams across India, UK, and US to gather requirements and deliver production-ready analytics solutions with strong data governance</li>
                 </ul>
             </div>
 
@@ -668,6 +695,21 @@
                     <li>Led reconciliation migration from TLM 2.7 to TLM 3.0, validating datasets to improve reporting reliability and cut errors by 25%</li>
                     <li>Designed and executed migration test cases, achieving a 92% match rate and reducing exceptions by 20%</li>
                     <li>Produced Excel-based reports and dashboards that enabled trading and risk teams to make faster, data-driven decisions</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-company">SmartStream Technologies</div>
+                        <div class="experience-title">Solutions Developer</div>
+                        <div class="experience-date">Dec 2019 – Jun 2021 | Bangalore</div>
+                    </div>
+                </div>
+                <ul class="experience-bullets">
+                    <li>Built and maintained SQL/Unix reconciliation pipelines, ensuring accuracy and compliance of large-scale financial datasets</li>
+                    <li>Developed validation logic and automated workflows that strengthened data integrity and reduced incidents</li>
+                    <li>Created Tableau dashboards for monitoring user behavior, trend analysis, and funnel performance, improving visibility for stakeholders</li>
                 </ul>
             </div>
         </div>
@@ -717,46 +759,6 @@
         </div>
     </section>
 
-    <section class="skills" id="skills">
-        <div class="section-container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Tools</h3>
-                    <div class="skill-pills">
-                        <span class="pill-light">SQL</span>
-                        <span class="pill-light">Python</span>
-                        <span class="pill-light">R</span>
-                        <span class="pill-light">Oracle</span>
-                        <span class="pill-light">MySQL</span>
-                        <span class="pill-light">Databricks</span>
-                        <span class="pill-light">Tableau</span>
-                        <span class="pill-light">Power BI</span>
-                        <span class="pill-light">Google Data Studio</span>
-                        <span class="pill-light">Excel</span>
-                        <span class="pill-light">GitHub</span>
-                        <span class="pill-light">Jira</span>
-                        <span class="pill-light">Figma</span>
-                        <span class="pill-light">Miro</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Competencies</h3>
-                    <div class="skill-pills">
-                        <span class="pill-colored">Statistical Analysis</span>
-                        <span class="pill-colored">Predictive Modeling</span>
-                        <span class="pill-colored">Data Modeling</span>
-                        <span class="pill-colored">ETL/ELT Pipelines</span>
-                        <span class="pill-colored">Fraud Detection</span>
-                        <span class="pill-colored">Data Analytics</span>
-                        <span class="pill-colored">Agile/Scrum</span>
-                        <span class="pill-colored">KPI Design</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="contact" id="contact">
         <div class="section-container">
             <h2 class="contact-main-title">Let's Connect</h2>
@@ -796,4 +798,38 @@
 
     <footer>
         <div class="section-container">
-            <p>© 2025 Bhavya Samtani. All rights
+            <p>© 2025 Bhavya Samtani. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.outcome-card, .experience-item, .project-card, .skill-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
