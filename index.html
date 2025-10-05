@@ -1,328 +1,986 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bhavya Samtani - Data Analyst</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f5f7fa; color: #333;
-    }
-
-    /* Navbar */
-    nav {
-      position: fixed; top: 0; width: 100%; background: white;
-      padding: 1.5rem 5%; z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .social-icons { display: flex; gap: 1rem; align-items: center; }
-    .social-icons a { color: #ff9eb3; transition: color 0.3s; }
-    .social-icons a:hover { color: #ff85a1; }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2.5rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: #555;
-      font-weight: 500;
-      transition: color 0.3s;
-      position: relative;
-    }
-    nav a:hover, nav a.active {
-      color: #ff9eb3;
-    }
-
-    /* Hero */
-    .hero {
-      margin-top: 80px;
-      padding: 6rem 8%;
-      background: linear-gradient(135deg, #ffe8f0 0%, #fff5f8 100%);
-      min-height: 90vh;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .hero-container {
-      display: flex; flex-wrap: wrap;
-      align-items: center; justify-content: space-between;
-      gap: 3rem; max-width: 1200px; width: 100%;
-    }
-    .hero-left { flex: 1 1 500px; min-width: 300px; }
-    .graduating {
-      color:#ff9eb3; font-weight:600; text-transform:uppercase;
-      letter-spacing:1px; margin-bottom:1rem;
-    }
-    .hero h1 {
-      font-size:3.5rem; color:#1a1a1a; margin-bottom:1.5rem;
-    }
-    .hero-subtitle {
-      font-size:1.2rem; color:#555; line-height:1.7; margin-bottom:2rem;
-    }
-    .hero-meta { display:flex; flex-wrap:wrap; gap:1.2rem; color:#666; font-size:0.95rem; margin-bottom:2rem; }
-    .resume-btn {
-      display:inline-flex; align-items:center; gap:0.5rem;
-      padding:0.8rem 1.5rem; background:#ff9eb3; color:white;
-      border-radius:8px; font-weight:600; text-decoration:none;
-      transition:all 0.3s;
-    }
-    .resume-btn:hover { background:#ff85a1; transform:translateY(-2px); }
-    .profile-image {
-      width:350px; height:350px; border-radius:50%; object-fit:cover;
-      border:8px solid white; box-shadow:0 10px 40px rgba(0,0,0,0.15);
-    }
-
-    /* Sections */
-    .section-container { max-width:1400px; margin:0 auto; }
-    .section-title {
-      font-size:2.5rem; margin-bottom:3rem;
-      color:#1a1a1a; text-align:center;
-    }
-
-    /* Education */
-    .education {
-      background: #f5f7fa; padding: 4rem 8%;
-    }
-    .section-subtitle {
-      text-align:center; color:#777; margin-bottom:3rem; font-size:1.1rem;
-    }
-    .edu-card {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      padding: 2.5rem;
-      margin-bottom: 2rem;
-      transition: all 0.3s ease;
-    }
-    .edu-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    .edu-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; }
-    .edu-header h3 { color:#1a1a1a; font-size:1.4rem; }
-    .edu-gpa {
-      background:#ff9eb3; color:white; padding:0.3rem 0.8rem;
-      border-radius:8px; font-weight:600; font-size:0.9rem;
-    }
-    .edu-university { color:#ff9eb3; font-weight:600; margin-bottom:0.5rem; }
-    .edu-details { color:#666; font-size:0.95rem; margin-bottom:1rem; }
-    .edu-coursework { font-weight:600; margin-bottom:0.8rem; color:#1a1a1a; }
-    .edu-tags { display:flex; flex-wrap:wrap; gap:0.6rem; }
-    .edu-tags span {
-      background:#f0f0f0; color:#333;
-      padding:0.4rem 1rem; border-radius:25px;
-      font-size:0.9rem; transition:all 0.3s;
-    }
-    .edu-tags span:hover {
-      background:#ff9eb3; color:white; transform:translateY(-2px);
-    }
-
-    /* Skills */
-    .skills { background:#f5f7fa; padding:4rem 8%; }
-    .skills-grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem;
-    }
-    .skill-category { background:white; padding:2rem; border-radius:15px; }
-    .skill-category h3 { color:#1a1a1a; margin-bottom:1.5rem; font-size:1.5rem; }
-    .skill-pills { display:flex; flex-wrap:wrap; gap:0.8rem; }
-    .pill-light { background:#f0f0f0; color:#333; padding:0.6rem 1.2rem; border-radius:25px; font-weight:500; }
-    .pill-light:hover { background:#e0e0e0; transform:translateY(-2px); }
-    .pill-colored { background:#ff9eb3; color:white; padding:0.6rem 1.2rem; border-radius:25px; font-weight:500; }
-    .pill-colored:hover { background:#ff85a1; transform:translateY(-2px); }
-
-    /* Experience */
-    .experience { background:white; padding:4rem 8%; }
-    .experience-item {
-      background:#f8f9fa; padding:2.5rem; border-radius:15px;
-      margin-bottom:2rem; border-left:4px solid #ff9eb3;
-    }
-    .experience-header { display:flex; justify-content:space-between; margin-bottom:1rem; }
-    .experience-company { color:#ff9eb3; font-weight:600; }
-    .experience-title { font-size:1.5rem; color:#1a1a1a; }
-    .experience-date { color:#999; font-size:0.9rem; }
-    .experience-bullets { list-style:none; margin-top:1rem; }
-    .experience-bullets li {
-      padding-left:1.5rem; margin-bottom:0.8rem; position:relative;
-      color:#555; line-height:1.6;
-    }
-    .experience-bullets li::before {
-      content:"→"; position:absolute; left:0; color:#ff9eb3; font-weight:bold;
-    }
-
-    /* Projects */
-    .projects { background:#f5f7fa; padding:4rem 8%; }
-    .projects-grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(350px,1fr)); gap:2rem;
-    }
-    .project-card {
-      background:white; border-radius:15px; padding:2.5rem; transition:all 0.3s;
-    }
-    .project-card:hover {
-      transform:translateY(-5px);
-      box-shadow:0 10px 30px rgba(255,158,179,0.2);
-    }
-    .project-card h3 { color:#ff9eb3; margin-bottom:1rem; font-size:1.5rem; }
-    .project-card p { color:#555; line-height:1.7; margin-bottom:1.5rem; }
-    .project-tags { display:flex; flex-wrap:wrap; gap:0.5rem; }
-    .tag { background:#ff9eb3; color:white; padding:0.4rem 1rem; border-radius:20px; font-size:0.85rem; }
-
-    /* Contact */
-    .contact {
-      background: linear-gradient(135deg, #ffe8f0 0%, #fff5f8 100%);
-      padding: 6rem 8%;
-      text-align: center;
-    }
-    .contact-main-title { font-size:3rem; color:#1a1a1a; margin-bottom:1.5rem; }
-    .contact-main-subtitle {
-      font-size:1.2rem; color:#666; max-width:800px;
-      margin:0 auto 4rem; line-height:1.7;
-    }
-    .contact-icons-grid {
-      display:flex; justify-content:center; gap:4rem; flex-wrap:wrap;
-    }
-    .contact-icon-item { text-decoration:none; display:flex; flex-direction:column; align-items:center; gap:1rem; transition:transform 0.3s; }
-    .contact-icon-item:hover { transform:translateY(-5px); }
-    .icon-circle {
-      width:100px; height:100px; border-radius:50%;
-      background:white; display:flex; align-items:center; justify-content:center;
-      color:#999; transition:all 0.3s; box-shadow:0 5px 20px rgba(0,0,0,0.08);
-    }
-    .contact-icon-item:hover .icon-circle {
-      color:#ff9eb3; box-shadow:0 10px 30px rgba(255,158,179,0.3);
-    }
-    .icon-label { color:#666; font-size:1.1rem; font-weight:500; }
-
-    footer {
-      background:#f5f7fa; padding:2rem 8%;
-      border-top:1px solid #e0e0e0; text-align:center;
-    }
-    footer p { color:#999; font-size:0.9rem; }
-
-    @media (max-width:1024px) {
-      .hero-container { flex-direction:column; }
-      .hero h1 { font-size:3rem; }
-      .profile-image { width:300px; height:300px; }
-      .contact-icons-grid { gap:2rem; }
-    }
-    @media (max-width:768px) {
-      nav ul { gap:1rem; font-size:0.9rem; }
-      .hero h1 { font-size:2.5rem; }
-    }
-  </style>
-</head>
-
-<body>
-  <nav>
-    <div class="social-icons">
-      <a href="https://github.com/bhavyasamtani" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/bhavyasamtani" target="_blank">LinkedIn</a>
-      <a href="mailto:bsamtani20@gmail.com">Email</a>
-    </div>
-    <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <section class="hero" id="home">
-    <div class="hero-container">
-      <div class="hero-left">
-        <p class="graduating">Graduating May 2026</p>
-        <h1>Bhavya Samtani</h1>
-        <p class="hero-subtitle">
-          Master's student in Information Systems at CSULB with 4.5+ years in IT and FinTech. Skilled in SQL, Python, Tableau, Power BI, and ETL pipelines. Experienced in building dashboards, predictive models, and analytics solutions that improve data accuracy and business insights.
-        </p>
-        <div class="hero-meta">
-          <div>📍 Long Beach, California</div>
-          <div>🎓 MS Information Systems</div>
-          <div>📊 Data Analytics Focus</div>
-        </div>
-        <a href="BhavyaSamtani.pdf" class="resume-btn">View Resume</a>
-      </div>
-      <img src="Bhavya1.png" alt="Bhavya Samtani" class="profile-image">
-    </div>
-  </section>
-
-  <section class="education" id="education">
-    <div class="section-container">
-      <h2 class="section-title">Education</h2>
-      <p class="section-subtitle">My academic journey in information systems and technology</p>
-
-      <div class="edu-card">
-        <div class="edu-header">
-          <h3>Master of Science in Information Systems</h3>
-          <span class="edu-gpa">GPA: 3.66</span>
-        </div>
-        <p class="edu-university">California State University, Long Beach</p>
-        <p class="edu-details">📅 Aug 2024 – May 2026 | 📍 Long Beach, California</p>
-        <p class="edu-coursework">Relevant Coursework:</p>
-        <div class="edu-tags">
-          <span>System Analysis</span>
-          <span>Data Analysis</span>
-          <span>Databases</span>
-          <span>Responsible AI</span>
-          <span>Machine Learning</span>
-          <span>Deep Learning</span>
-        </div>
-      </div>
-
-      <div class="edu-card">
-        <div class="edu-header">
-          <h3>Bachelor of Technology in Information Technology</h3>
-        </div>
-        <p class="edu-university">Manav Rachna College Of Engineering</p>
-        <p class="edu-details">📅 Aug 2014 – May 2018 | 📍 India</p>
-        <p class="edu-coursework">Relevant Coursework:</p>
-        <div class="edu-tags">
-          <span>Database Management Systems</span>
-          <span>Data Structures</span>
-          <span>OOP</span>
-          <span>Networks</span>
-          <span>Operating Systems</span>
-          <span>Information Security</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills, Experience, Projects, Contact (unchanged from your latest version) -->
-  <!-- Keep your existing sections here exactly as before -->
-  
-  <script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-        this.classList.add('active');
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-
-    // Highlight active section while scrolling
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll("nav ul li a");
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (scrollY >= sectionTop) current = section.getAttribute("id");
-      });
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhavya Samtani - Data Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      });
-    });
-  </script>
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: #ff9eb3;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ff85a1;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .logo-pink {
+            color: #ff9eb3;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff9eb3;
+        }
+
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 8%;
+            background: linear-gradient(135deg, #ffe8f0 0%, #fff5f8 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(200, 150, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(150, 200, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 180, 220, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 90% 30%, rgba(200, 255, 200, 0.2) 0%, transparent 50%);
+            filter: blur(60px);
+            animation: floatGradient 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatGradient {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-left {
+            animation: fadeInLeft 1s ease;
+        }
+
+        .graduating {
+            font-size: 0.95rem;
+            color: #ff9eb3;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid #e0e0e0;
+            margin: 1.5rem 0;
+        }
+
+        .linkedin-btn:hover {
+            border-color: #ff9eb3;
+            color: #ff9eb3;
+            transform: translateY(-2px);
+        }
+
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            animation: fadeInRight 1s ease;
+        }
+
+        .profile-image {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 8px solid white;
+        }
+
+        .key-outcomes {
+            background: white;
+            padding: 4rem 8%;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .outcome-card {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .outcome-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .outcome-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ff9eb3;
+            margin-bottom: 0.5rem;
+        }
+
+        .outcome-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .skills {
+            background: #f5f7fa;
+            padding: 4rem 8%;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .skill-category h3 {
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .skill-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .pill-light {
+            background: #f0f0f0;
+            color: #333;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .pill-light:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .pill-colored {
+            background: #ff9eb3;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .pill-colored:hover {
+            background: #ff85a1;
+            transform: translateY(-2px);
+        }
+        /* ===== EDUCATION SECTION ===== */
+.education {
+  background: #f5f7fa;
+  padding: 4rem 8%;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.edu-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.edu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.edu-header h3 {
+  color: #1a1a1a;
+  font-size: 1.4rem;
+}
+
+.edu-gpa {
+  background: #ff9eb3;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.edu-university {
+  color: #ff9eb3;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.edu-details {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.edu-coursework {
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #1a1a1a;
+}
+
+.edu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.edu-tags span {
+  background: #f0f0f0;
+  color: #333;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.edu-tags span:hover {
+  background: #ff9eb3;
+  color: white;
+  transform: translateY(-2px);
+}
+
+
+        .experience {
+            background: white;
+            padding: 4rem 8%;
+        }
+
+        .experience-item {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #ff9eb3;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-company {
+            color: #ff9eb3;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-date {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .experience-bullets {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-bullets li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .experience-bullets li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ff9eb3;
+            font-weight: bold;
+        }
+
+        .projects {
+            background: #f5f7fa;
+            padding: 4rem 8%;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 158, 179, 0.2);
+        }
+
+        .project-card h3 {
+            color: #ff9eb3;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #ff9eb3;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .contact {
+    background: linear-gradient(135deg, #ffe8f0 0%, #fff5f8 100%);
+    padding: 6rem 8%;
+    text-align: center;
+}
+
+        .contact-main-title {
+            font-size: 3rem;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-main-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            line-height: 1.7;
+        }
+
+        .contact-icons-grid {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-icon-item {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-icon-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-icon-item:hover .icon-circle {
+            color: #ff9eb3;
+            box-shadow: 0 10px 30px rgba(255, 158, 179, 0.3);
+        }
+
+        .icon-label {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #f5f7fa;
+            padding: 2rem 8%;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        footer p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .profile-image {
+                width: 300px;
+                height: 300px;
+            }
+
+            .contact-icons-grid {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <div class="social-icons">
+                <a href="https://github.com/bhavyasamtani" target="_blank">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/bhavyasamtani" target="_blank">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="mailto:bsamtani20@gmail.com">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#education>Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home" style="background: linear-gradient(135deg, #ffe8f0 0%, #fff5f8 100%); padding: 6rem 8%; display: flex; align-items: center; justify-content: center;">
+  <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 3rem; max-width: 1200px; width: 100%;">
+    
+    <!-- Left: Text -->
+    <div style="flex: 1 1 500px; min-width: 300px;">
+      <p style="color:#ff9eb3; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:1rem;">
+        Graduating May 2026
+      </p>
+      <h1 style="font-size:3.5rem; color:#1a1a1a; margin-bottom:1.5rem;">Bhavya Samtani</h1>
+      <p style="font-size:1.2rem; color:#555; line-height:1.7; margin-bottom:2rem;">
+        Master's student in Information Systems at CSULB with 4.5+ years in IT and FinTech. Skilled in SQL, Python, Tableau, Power BI, and ETL pipelines. Experienced in building dashboards, predictive models, and analytics solutions that improve data accuracy, automate reporting, and drive business insights.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:1.2rem; color:#666; font-size:0.95rem; margin-bottom:2rem;">
+        <div>📍 Long Beach, California</div>
+        <div>🎓 MS Information Systems</div>
+        <div>📊 Data Analytics Focus</div>
+      </div>
+      <a href="BhavyaSamtani.pdf" class="resume-btn" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.8rem 1.5rem; background:#ff9eb3; color:white; border-radius:8px; font-weight:600; text-decoration:none; transition:all 0.3s;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+        </svg>
+        View Resume
+      </a>
+    </div>
+
+  <img src="Bhavya1.png" alt="Bhavya Samtani" 
+     style="width:350px; height:350px; border-radius:50%; object-fit:cover; border:8px solid white; box-shadow:0 10px 40px rgba(0,0,0,0.15); transform:rotate(0deg);">
+
+  </div>
+</section>
+
+
+    <section class="key-outcomes">
+        <div class="section-container">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="outcomes-grid">
+                <div class="outcome-card">
+                    <div class="outcome-value">50K+</div>
+                    <p class="outcome-desc">Records processed and validated with SQL and Excel, improving data quality for university reporting</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-value">80%</div>
+                    <p class="outcome-desc">Processing efficiency improvement through automated SQL and Python reconciliation pipelines</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-value">30%</div>
+                    <p class="outcome-desc">Reduction in reporting turnaround time via automated Power BI dashboards</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-value">33%</div>
+                    <p class="outcome-desc">Cut in customer hold times through operational analytics and queuing model optimization</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- EDUCATION SECTION START -->
+<section class="education" id="education">
+  <section class="education" id="education">
+  <div class="section-container">
+    <h2 class="section-title">Education</h2>
+    <p class="section-subtitle">My academic journey in information systems and technology</p>
+
+    <!-- Master's -->
+    <div class="edu-card">
+      <div class="edu-header">
+        <h3>Master of Science in Information Systems</h3>
+        <span class="edu-gpa">GPA: 3.66</span>
+      </div>
+      <p class="edu-university">California State University, Long Beach</p>
+      <p class="edu-details">📅 Aug 2024 – May 2026 | 📍 Long Beach, California</p>
+      <p class="edu-coursework">Relevant Coursework:</p>
+      <div class="edu-tags">
+        <span>System Analysis</span>
+        <span>Data Analysis</span>
+        <span>Databases</span>
+        <span>Responsible AI</span>
+        <span>Machine Learning</span>
+        <span>Deep Learning</span>
+      </div>
+    </div>
+
+    <!-- Bachelor's -->
+    <div class="edu-card">
+      <div class="edu-header">
+        <h3>Bachelor of Technology in Information Technology</h3>
+      </div>
+      <p class="edu-university">Manav Rachna College Of Engineering</p>
+      <p class="edu-details">📅 Aug 2014 – May 2018 | 📍 India</p>
+      <p class="edu-coursework">Relevant Coursework:</p>
+      <div class="edu-tags">
+        <span>Database Management Systems</span>
+        <span>Data Structures and Algorithms</span>
+        <span>Object-Oriented Programming</span>
+        <span>Computer Networks</span>
+        <span>Operating Systems</span>
+        <span>Information Security</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</section>
+<!-- EDUCATION SECTION END -->
+
+    <section class="skills" id="skills">
+        <div class="section-container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-pills">
+                        <span class="pill-light">SQL</span>
+                        <span class="pill-light">Python</span>
+                        <span class="pill-light">R</span>
+                        <span class="pill-light">Oracle</span>
+                        <span class="pill-light">MySQL</span>
+                        <span class="pill-light">Databricks</span>
+                        <span class="pill-light">Tableau</span>
+                        <span class="pill-light">Power BI</span>
+                        <span class="pill-light">Google Data Studio</span>
+                        <span class="pill-light">Excel</span>
+                        <span class="pill-light">GitHub</span>
+                        <span class="pill-light">Jira</span>
+                        <span class="pill-light">Figma</span>
+                        <span class="pill-light">Miro</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Competencies</h3>
+                    <div class="skill-pills">
+                        <span class="pill-colored">Statistical Analysis</span>
+                        <span class="pill-colored">Predictive Modeling</span>
+                        <span class="pill-colored">Data Modeling</span>
+                        <span class="pill-colored">ETL/ELT Pipelines</span>
+                        <span class="pill-colored">Fraud Detection</span>
+                        <span class="pill-colored">Data Analytics</span>
+                        <span class="pill-colored">Agile/Scrum</span>
+                        <span class="pill-colored">KPI Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience" id="experience">
+        <div class="section-container">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-company">Tata Consultancy Services</div>
+                        <div class="experience-title">Systems Engineer</div>
+                        <div class="experience-date">May 2022 – Jul 2024 | Hyderabad</div>
+                    </div>
+                </div>
+                <ul class="experience-bullets">
+                    <li>Automated SQL and Python reconciliation pipelines on large datasets, improving processing efficiency by 80%</li>
+                    <li>Designed and deployed Power BI dashboards with real-time KPIs, enhancing risk monitoring and executive decision-making</li>
+                    <li>Partnered with global teams across India, UK, and US to gather requirements and deliver production-ready analytics solutions with strong data governance</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-company">Nomura Services Pvt. Ltd</div>
+                        <div class="experience-title">Technical Analyst</div>
+                        <div class="experience-date">Jun 2021 – May 2022 | Mumbai</div>
+                    </div>
+                </div>
+                <ul class="experience-bullets">
+                    <li>Led reconciliation migration from TLM 2.7 to TLM 3.0, validating datasets to improve reporting reliability and cut errors by 25%</li>
+                    <li>Designed and executed migration test cases, achieving a 92% match rate and reducing exceptions by 20%</li>
+                    <li>Produced Excel-based reports and dashboards that enabled trading and risk teams to make faster, data-driven decisions</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-company">SmartStream Technologies</div>
+                        <div class="experience-title">Solutions Developer</div>
+                        <div class="experience-date">Dec 2019 – Jun 2021 | Bangalore</div>
+                    </div>
+                </div>
+                <ul class="experience-bullets">
+                    <li>Built and maintained SQL/Unix reconciliation pipelines, ensuring accuracy and compliance of large-scale financial datasets</li>
+                    <li>Developed validation logic and automated workflows that strengthened data integrity and reduced incidents</li>
+                    <li>Created Tableau dashboards for monitoring user behavior, trend analysis, and funnel performance, improving visibility for stakeholders</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="section-container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Liver Disease Prediction</h3>
+                    <p>Built and optimized ML models (Logistic Regression, Random Forest, XGBoost, SVM) on healthcare data using EDA, feature engineering, and statistical analysis to improve predictive accuracy.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Healthcare</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Mental Wellness Support System</h3>
+                    <p>Designed a 21-table Oracle SQL schema with role-based access and advanced queries for therapy scheduling, payments, and KPI reporting.</p>
+                    <div class="project-tags">
+                        <span class="tag">Oracle SQL</span>
+                        <span class="tag">Database Design</span>
+                        <span class="tag">Healthcare</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Moodify - Spotify Prototype</h3>
+                    <p>Led a 4-member team to design and deliver a user-centric Spotify prototype for mood-based playlist recommendations, applying a 5-day design sprint with Miro and Figma.</p>
+                    <div class="project-tags">
+                        <span class="tag">UX Design</span>
+                        <span class="tag">Figma</span>
+                        <span class="tag">Product Design</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>US Airways Analytics</h3>
+                    <p>Led operational and financial analysis, implementing queuing models and a hybrid staffing strategy that cut customer hold times by 33% while boosting service quality.</p>
+                    <div class="project-tags">
+                        <span class="tag">Operations Analytics</span>
+                        <span class="tag">Queuing Theory</span>
+                        <span class="tag">Business Strategy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <h2 class="contact-main-title">Let's Connect</h2>
+            <p class="contact-main-subtitle">I'm always interested in new opportunities and collaborations. Feel free to reach out if you'd like to discuss potential projects or just connect!</p>
+            
+            <div class="contact-icons-grid">
+                <a href="mailto:bsamtani20@gmail.com" class="contact-icon-item">
+                    <div class="icon-circle">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <p class="icon-label">Email</p>
+                </a>
+                
+                <a href="https://github.com/bhavyasamtani" target="_blank" class="contact-icon-item">
+                    <div class="icon-circle">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </div>
+                    <p class="icon-label">GitHub</p>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/bhavyasamtani" target="_blank" class="contact-icon-item">
+                    <div class="icon-circle">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </div>
+                    <p class="icon-label">LinkedIn</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="section-container">
+            <p>© 2025 Bhavya Samtani. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.outcome-card, .experience-item, .project-card, .skill-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
-</html>
